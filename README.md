@@ -12,3 +12,14 @@ Resource Server – store user’s data and http services which can return user 
 Authorization Server – responsible for authenticating user’s identity and gives an authorization token. This token is accepted by resource server and validate your identity.
 
 Resource / Authorization Server – The resource server hosts the protected user accounts, and the authorization server verifies the identity of the user then issues access tokens to the application.
+
+ClientDetailsServiceConfigurer is used to define an in-memory or JDBC implementation of the client details service. we have used in-memory implementation. It has the following important attributes:
+
+clientId – (required) the client id.
+secret – (required for trusted clients) the client secret, if any.
+scope – The scope to which the client is limited. If the scope is undefined or empty (the default), the client is not limited by scope.
+authorizedGrantTypes – Grant types that are authorized for the client to use. The default value is empty.
+authorities – Authorities that are granted to the client (regular Spring Security authorities).
+redirectUris – redirects the user-agent to the client’s redirection endpoint. It must be an absolute URL.
+
+http://localhost:8080/oauth/authorize?client_id=clientApp&response_type=code&scope=read_profile_info
